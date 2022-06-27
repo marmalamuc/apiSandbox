@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+   <meta charset="UTF-8">
+   <head>
+      <title>Testing API reqs &amp; responses</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script>
+      //POSTMAN CODE GOES HERE
+      var settings = {
+        "url": "https://api.openweathermap.org/data/2.5/weather?zip=37207&units=imperial&appid=5fa5f93d8fb4fef0643af6eaf2f74235",
+        "method": "GET",
+        "timeout": 0,
+      };
+
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+        console.log('wind speed: ' + response.wind.speed);
+        console.log('current weather: ' + response.weather[0].main);
+
+        var content = response.wind.speed;
+        $("#windSpeed").append(content);
+
+        var currentWeather = response.weather[0].main;
+        $("#currentWeather").append(currentWeather);
+      });
+      </script>
+   </head>
+   <body>
+      <h1>Sample Page</h1>
+      <p>Wind speed: <strong><span id="windSpeed"></span></strong></p>
+      <p>Current weather: <strong><span id="currentWeather"></span></strong></p>
+   </body>
+</html>

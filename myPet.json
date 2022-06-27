@@ -1,0 +1,18 @@
+{
+  "id": 2007,
+  "category": {
+    "id": 123,
+    "name": "test"
+  },
+  "name": "hodor",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 0,
+      "name": "string"
+    }
+  ],
+  "status": "available"
+}
