@@ -1,0 +1,38 @@
+<html>
+   <body>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script>
+
+         jQuery.ajax({
+             url: "https://api.aerisapi.com/observations/amsterdam,netherlands?filter=allstations&limit=10",
+             type: "GET",
+             data: {
+                 "client_id": "ID",
+                 "client_secret": "SECRET",
+             },
+         })
+         .done(function(data, textStatus, jqXHR) {
+             console.log("HTTP Request Succeeded: " + jqXHR.status);
+             console.log(data);
+             if (data.response[9].ob.windSpeedMPH >= 14) {
+         	var windAnswer = "Yes, it's too windy.";
+         }
+         	else  {
+         	 var windAnswer = "No, it's not that windy.";
+         	}
+             $("#windAnswer").append(windAnswer)
+         })
+         .fail(function(jqXHR, textStatus, errorThrown) {
+             console.log("HTTP Request Failed");
+         })
+         .always(function() {
+             /* ... */
+         });
+
+
+      </script>
+      <p>Is it too windy to go on a bike ride?</p>
+      <div id="windAnswer" style="font-size:76px"></div>
+
+   </body>
+</html>
